@@ -1,7 +1,7 @@
 import "./App.css";
 import { LoginGoogle } from "./components/LoginGoogle";
 import { Dashboard } from "./pages/Dashboard";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/Home.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./auth/PrivateRoute";
 
