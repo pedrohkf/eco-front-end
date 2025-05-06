@@ -1,0 +1,14 @@
+.loginGoogle {
+    display: flex;
+    align-items: center;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(70, 1, 1, 0.247);
+    cursor: pointer;
+}
+
+.loginGoogle img {
+    width: 100%;
+    border-radius: 12px;
+}
