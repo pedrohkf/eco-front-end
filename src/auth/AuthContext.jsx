@@ -48,7 +48,6 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ user, login, loading }}>
       {children}
-      {user}
     </AuthContext.Provider>
   );
 };

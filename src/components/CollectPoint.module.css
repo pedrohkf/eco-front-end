@@ -1,0 +1,10 @@
+.container {
+    width: 15rem;
+    height: 15rem;
+    background-color: rgb(241, 255, 240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    border-radius: 20px;
+}
