@@ -35,15 +35,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token, userData) => {
-    localStorage.setItem("cookie", token);
+    localStorage.setItem("token", token);
     setUser(userData);
     console.log("LOGIN TOKEN: ", user);
   };
-
-  // const logout = () => {
-  //   localStorage.removeItem("token");
-  //   setUser(null);
-  // };
 
   return (
     <AuthContext.Provider value={{ user, login, loading }}>

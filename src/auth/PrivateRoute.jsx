@@ -1,12 +1,17 @@
-import { useAuth } from "./AuthContext";
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-  if (loading) return <p>loading...</p>;
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
 
-  return user ? children : <Navigate to="/login" />;
+  return token ? children : null;
 };
 
 export default PrivateRoute;

@@ -7,6 +7,7 @@ import axios from "axios";
 import styles from "./LoginGoogle.module.css";
 import { useAuth } from "../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const LoginGoogle = () => {
   const { login } = useAuth();
@@ -18,22 +19,39 @@ export const LoginGoogle = () => {
       const result = await signInWithPopup(auth, provider);
       const token = await result.user.getIdToken();
 
-      console.log("ID Firebase:", token);
+      const user = result.user;
+      const email = user.email;
+      const name = user.displayName;
+      const photo = user.photoURL;
+
       localStorage.setItem("token", token);
 
       const response = await axios.post("http://localhost:3000/login", {
         token,
       });
 
-      login(token, response.data.email);
+      const responseUser = await axios.post("http://localhost:3000/register", {
+        name,
+        email,
+        photo,
+      });
 
-      console.log("Usuário autenticado no backend:", response.data.email);
+      login(token, response.data.email);
 
       navigate("/dashboard");
     } catch (error) {
       console.error("Erro ao autenticar com Google:", error);
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   return (
     <div onClick={loginWithGoogle} className={styles.loginGoogle}>
       <img src={photoGoogle} />

@@ -1,5 +1,11 @@
 import React from "react";
+import { Menu } from "../components/Menu";
 
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Menu />
+      HOME
+    </div>
+  );
 };
